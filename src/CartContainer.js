@@ -4,6 +4,7 @@ import { useGlobalContext } from './context'
 
 const CartContainer = () => {
   const { cart } = useGlobalContext()
+  console.log(cart);
   if (cart.length === 0) {
     return (
       <section className='cart'>
