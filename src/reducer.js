@@ -23,7 +23,7 @@ const reducer = (state, action) => {
         return {...cartItem, amount: cartItem.amount - 1}
       }
       return cartItem;
-    }).filter((cartItem) => cartItem.amount != 0);
+    }).filter((cartItem) => cartItem.amount !== 0);
     return {...state, cart: tempCart};
   }
   if (action.type === 'GET_TOTALS') {
@@ -38,6 +38,12 @@ const reducer = (state, action) => {
     );
     total = parseFloat(total.toFixed(2));
     return {...state, total, amount};
+  }
+  if (action.type === 'LOADING') {
+    return {...state, loading: true};
+  }
+  if (action.type === 'DISPLAY_ITEMS') {
+    return {...state, loading: false, cart: action.payload};
   }
   return state;
 }
